@@ -161,6 +161,12 @@ export default {
           onComplete: () => {
             this.open = false
             this.lockedUI = false
+
+            if (window.getSelection) {
+              window.getSelection().removeAllRanges()
+            } else if (document.selection) {
+              document.selection.empty()
+            }
           }
         })
         this.tl
