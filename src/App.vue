@@ -77,6 +77,7 @@ export default {
     FeedContainer
   },
   mounted() {
+    this.tl = new TimelineMax()
     var Faders = this.$el.querySelectorAll(
       '.feed-container, .user-input, .heading-content'
     )
@@ -119,10 +120,10 @@ export default {
     },
     onMouseMove(event) {
       this.lockedUI = true
-      if(event.clientX - this.mousePosition.x <= 0) {
+      if (event.clientX - this.mousePosition.x <= 0) {
         this.mouse.x = event.clientX - this.mousePosition.x
       }
-      if(event.clientY - this.mousePosition.y <= 0) {
+      if (event.clientY - this.mousePosition.y <= 0) {
         this.mouse.y = event.clientY - this.mousePosition.y
       }
       TweenMax.set(this.$el, { x: this.mouse.x, y: this.mouse.y })
@@ -134,7 +135,11 @@ export default {
       this.endInteraction()
     },
     endInteraction() {
-      TweenMax.to(this.$el, 0.5, { x: 0, y: this.mouse.y, ease: Elastic.easeOut })
+      TweenMax.to(this.$el, 0.5, {
+        x: 0,
+        y: this.mouse.y,
+        ease: Elastic.easeOut
+      })
 
       this.lastPosition.x = 0
       this.lastPosition.y = this.mouse.y
@@ -151,13 +156,14 @@ export default {
         )
         this.open = false
         this.lockedUI = true
-        var tl = new TimelineMax({
+        this.tl.kill()
+        this.tl = new TimelineMax({
           onComplete: () => {
             this.open = false
             this.lockedUI = false
           }
         })
-        tl
+        this.tl
           .staggerTo(Faders, 0.3, { opacity: 0 }, 0.15)
           .to(this.$el.querySelector('.heading-decoration'), 0.3, {
             y: '100%',
@@ -180,13 +186,14 @@ export default {
         )
         this.open = true
         this.lockedUI = true
-        var tl = new TimelineMax({
+        this.tl.kill()
+        this.tl = new TimelineMax({
           onComplete: () => {
             this.open = true
             this.lockedUI = false
           }
         })
-        tl
+        this.tl
           .to(this.$el.querySelector('.cta-activate'), 0.3, {
             alpha: 0,
             clearProps: 'all'
