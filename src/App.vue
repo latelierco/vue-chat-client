@@ -42,6 +42,10 @@ export default {
           text: 'Hi, how can i help you ?'
         }
       ]
+    },
+    draggable: {
+      type: Boolean,
+      default: () => false
     }
   },
   data() {
@@ -95,7 +99,9 @@ export default {
       })
       .set(this.$el.querySelector('.cta-activate'), { alpha: 1 })
 
-    this.$el.addEventListener('mousedown', this.startInteraction, false)
+    if (this.draggable) {
+      this.$el.addEventListener('mousedown', this.startInteraction, false)
+    }
   },
   methods: {
     startInteraction(event) {
@@ -301,7 +307,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Lato', sans-serif;
-  background-color: #fbf8f4;
   color: #6b7380;
   max-height: 500px;
   width: 420px;

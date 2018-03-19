@@ -9,5 +9,5 @@ Vue.config.productionTip = false
 new Vue({
   el: '#bot-app',
   components: { App },
-  template: '<App />'
+  template: '<App :draggable="true"/>'
 })

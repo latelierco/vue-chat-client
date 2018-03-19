@@ -36,6 +36,7 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
+  box-shadow: 0 0 2px rgba(0,0,0,.075);
 }
 .gabarit {
   display: flex;
