@@ -68,6 +68,10 @@ export default {
       lastPosition: {
         x: 0,
         y: 0
+      },
+      side: {
+        x: 1,
+        y: 1
       }
     }
   },
@@ -110,6 +114,7 @@ export default {
   methods: {
     startInteraction(event) {
       if (!this.open) {
+        TweenMax.killTweensOf(this.$el)
         event.preventDefault()
         window.addEventListener('mousemove', this.onMouseMove, false)
         window.addEventListener('mouseup', this.onMouseUp, false)
@@ -120,13 +125,22 @@ export default {
     },
     onMouseMove(event) {
       this.lockedUI = true
-      if (event.clientX - this.mousePosition.x <= 0) {
+      if (
+        event.clientX - this.mousePosition.x <= 0 &&
+        event.clientX - this.mousePosition.x >=
+          -(window.innerWidth - this.margin * 2 - 60)
+      ) {
         this.mouse.x = event.clientX - this.mousePosition.x
       }
-      if (event.clientY - this.mousePosition.y <= 0) {
+      if (
+        event.clientY - this.mousePosition.y <= 0 &&
+        event.clientY - this.mousePosition.y >=
+          -(window.innerHeight - this.margin * 2 - 60)
+      ) {
         this.mouse.y = event.clientY - this.mousePosition.y
       }
       TweenMax.set(this.$el, { x: this.mouse.x, y: this.mouse.y })
+      this.checkClosestWall()
     },
     onMouseUp() {
       window.removeEventListener('mousemove', this.onMouseMove, false)
@@ -134,14 +148,21 @@ export default {
 
       this.endInteraction()
     },
+    checkClosestWall() {
+      let x = (window.innerWidth - 60 - this.margin * 2) / 2 + this.mouse.x
+      let y = (window.innerHeight - 60 - this.margin * 2) / 2 + this.mouse.y
+      this.side.x = Math.sign(x)
+      this.side.y = Math.sign(y)
+    },
     endInteraction() {
+      let newX =
+        this.side.x > 0 ? 0 : -(window.innerWidth - 60 - this.margin * 2)
       TweenMax.to(this.$el, 0.5, {
-        x: 0,
+        x: newX,
         y: this.mouse.y,
         ease: Elastic.easeOut
       })
-
-      this.lastPosition.x = 0
+      this.lastPosition.x = newX
       this.lastPosition.y = this.mouse.y
       if (!this.lockedUI) {
         this.openUI()
