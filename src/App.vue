@@ -43,6 +43,10 @@ export default {
         }
       ]
     },
+    margin: {
+      type: Number,
+      default: () => 28
+    },
     draggable: {
       type: Boolean,
       default: () => false
@@ -53,7 +57,6 @@ export default {
       open: true,
       lockedUI: false,
       message: '',
-      userFriendly: true,
       mousePosition: {
         x: 0,
         y: 0
@@ -116,14 +119,22 @@ export default {
     },
     onMouseMove(event) {
       this.lockedUI = true
-      this.mouse.x = event.clientX - this.mousePosition.x
-      this.mouse.y = event.clientY - this.mousePosition.y
+      if(event.clientX - this.mousePosition.x <= 0) {
+        this.mouse.x = event.clientX - this.mousePosition.x
+      }
+      if(event.clientY - this.mousePosition.y <= 0) {
+        this.mouse.y = event.clientY - this.mousePosition.y
+      }
       TweenMax.set(this.$el, { x: this.mouse.x, y: this.mouse.y })
     },
     onMouseUp() {
       window.removeEventListener('mousemove', this.onMouseMove, false)
       window.removeEventListener('mouseup', this.onMouseUp, false)
-      TweenMax.to(this.$el, 0.5, { x: 0, ease: Elastic.easeOut })
+
+      this.endInteraction()
+    },
+    endInteraction() {
+      TweenMax.to(this.$el, 0.5, { x: 0, y: this.mouse.y, ease: Elastic.easeOut })
 
       this.lastPosition.x = 0
       this.lastPosition.y = this.mouse.y
@@ -153,6 +164,7 @@ export default {
             marginBottom: 0
           })
           .to(this.$el, 0.3, {
+            x: this.lastPosition.x,
             y: this.lastPosition.y,
             width: 60,
             height: 60,
@@ -180,11 +192,12 @@ export default {
             clearProps: 'all'
           })
           .to(this.$el, 0.3, {
-            y: 28,
+            x: 0,
+            y: this.margin,
             width: 420,
             height: 500,
-            borderRadius: 8
-            // clearProps: 'all'
+            borderRadius: 8,
+            clearProps: 'width, height, borderRadius'
           })
           .to(this.$el.querySelector('.heading-decoration'), 0.3, {
             y: '0%',
