@@ -290,7 +290,7 @@ export default {
       }
       return axios
         .post(
-          'https://api.datainfogreffe-dev.latelier.co/api/v1/chatbot/message',
+          this.feederUrl,
           data
         )
         .catch(error => console.log(error))
