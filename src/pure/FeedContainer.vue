@@ -21,7 +21,7 @@
 <script>
 import axios from 'axios'
 
-import Txt from './Text'
+import Message from './Text'
 import Card from './Card'
 import Quote from './Quote'
 import Waiting from './Waiting'
@@ -31,7 +31,7 @@ import Empty from './Empty'
 export default {
   props: ['feeds'],
   components: {
-    Txt,
+    Message,
     Card,
     Quote,
     Waiting,
@@ -49,7 +49,7 @@ export default {
     subEnter(el, done) {
       var tl = new TimelineMax({ onComplete: done })
       tl
-        .set(el, { alpha: 0, y: 20})
+        .set(el, { alpha: 0, y: 20 })
         .to('.feed-container', 0.3, { scrollTo: { y: 'max' } }, 'a')
         .to(el, 0.3, { alpha: 1, y: 0 }, 'a')
     },

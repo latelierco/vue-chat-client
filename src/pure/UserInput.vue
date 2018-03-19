@@ -1,7 +1,7 @@
 <template>
   <div class="user-input">
     <form class="gabarit" v-on:submit.prevent="onSubmit">
-      <input type="text" placeholder="votre question" :value="message" @input="updateMessage"/>
+      <input type="text" :placeholder="placeholder" :value="message" @input="updateMessage"/>
       <button type="submit">
         <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
         	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  props: ['onSubmit', 'message', 'updateMessage']
+  props: ['onSubmit', 'message', 'updateMessage', 'placeholder']
 }
 </script>
 

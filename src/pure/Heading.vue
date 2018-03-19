@@ -2,7 +2,7 @@
   <div class="heading" @click="closeUi">
     <div class="heading-decoration"></div>
     <div class="heading-content">
-      <h2 class="user-name">Vue Chat Client</h2>
+      <h2 class="user-name">{{headerCaption}}</h2>
       <div class="reduce-cta">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 129 129" enable-background="new 0 0 129 129" width="100%" height="100%">
           <path d="M37.8,68h53.3c2.3,0,4.1-1.8,4.1-4.1s-1.8-4.1-4.1-4.1H37.8c-2.3,0-4.1,1.8-4.1,4.1S35.6,68,37.8,68z" fill="#FFFFFF"/>
@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  props: ['closeUi']
+  props: ['closeUi', 'headerCaption']
 }
 </script>
 
@@ -63,6 +63,6 @@ h2 {
   position: absolute;
   right: 5px;
   opacity: 0;
-  transition: opacity .3s ease;
+  transition: opacity 0.3s ease;
 }
 </style>
