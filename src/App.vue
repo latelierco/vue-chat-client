@@ -335,25 +335,19 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css?family=Lato:400,500|Oswald:400,700');
 
 ::-webkit-scrollbar {
   display: none;
 }
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
 #bot-app {
   height: 100%;
   position: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Lato', sans-serif;
+  background-color: white;
   color: #6b7380;
   max-height: 500px;
   width: 420px;
