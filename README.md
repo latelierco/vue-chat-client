@@ -20,16 +20,15 @@ npm install vue-chat-client --save
 ```
 
 ``` js
+import Vue from 'vue'
 import ChatClient from 'vue-chat-client'
+Vue.component('chat-client', ChatClient)
 ```
 
 ### Usage
 
 ``` js
 export default {
-  components: {
-    ChatClient
-  },
   data() {
     return: {
       feeds: [
