@@ -9,5 +9,17 @@ Vue.config.productionTip = false
 new Vue({
   el: '#bot-app',
   components: { App },
-  template: '<App :draggable="true"/>'
+  data() {
+    return {
+      feeds: [
+        {
+          type: 'message',
+          text: 'Hi, how can I help you ?'
+        }
+      ]
+    }
+  },
+  template:
+    '<App :draggable="true" header-caption="Vue chat client demo" :feeds="feeds"/>',
+  mounted() {}
 })

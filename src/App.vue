@@ -253,33 +253,7 @@ export default {
       this.message = $event.target.value
     },
     onSubmit() {
-      if (this.message == '༼ つ ◕_◕ ༽つ') {
-        this.feeds.push({
-          text: this.message,
-          type: 'message',
-          owned: true
-        })
-        this.feeds.push({
-          type: 'card',
-          text: "L'Atelier",
-          url:
-            'https://cdn.mos.cms.futurecdn.net/UAYAH4UAehXrpwh6BKUWU9-970-80.jpg'
-        })
-        this.message = ''
-      } else if (this.message == '“ヽ(´▽｀)ノ”') {
-        this.feeds.push({
-          text: this.message,
-          type: 'message',
-          owned: true
-        })
-        this.feeds.push({
-          type: 'quote',
-          title: "L'Atelier",
-          url:
-            'https://pre00.deviantart.net/317c/th/pre/i/2011/023/7/5/new_york_by_skelly1000-d31hkzj.jpg'
-        })
-        this.message = ''
-      } else if (this.message) {
+      if (this.message) {
         this.feedMe()
         this.message = ''
       }
@@ -288,21 +262,10 @@ export default {
       let data = {
         text: message
       }
-      return axios
-        .post(
-          this.feederUrl,
-          data
-        )
-        .catch(error => console.log(error))
+      return axios.post(this.feederUrl, data).catch(error => console.log(error))
     },
     mapper(data) {
-      let newData = {
-        type: 'message',
-        text: data.Text,
-        url:
-          'https://pre00.deviantart.net/317c/th/pre/i/2011/023/7/5/new_york_by_skelly1000-d31hkzj.jpg'
-      }
-      return newData
+      return data
     },
     feedMe() {
       this.feeds.push({
@@ -335,25 +298,19 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css?family=Lato:400,500|Oswald:400,700');
 
 ::-webkit-scrollbar {
   display: none;
 }
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
 #bot-app {
   height: 100%;
   position: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Lato', sans-serif;
+  background-color: white;
   color: #6b7380;
   max-height: 500px;
   width: 420px;
