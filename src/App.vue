@@ -234,7 +234,7 @@ export default {
             y: this.margin,
             width: 420,
             height: 500,
-            borderRadius: 8,
+            borderRadius: 3,
             clearProps: 'width, height, borderRadius'
           })
           .to(this.$el.querySelector('.heading-decoration'), 0.3, {
@@ -322,8 +322,8 @@ export default {
   bottom: 28px;
   right: 28px;
   box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16);
-  border-top-left-radius: 0.5em;
-  border-top-right-radius: 0.5em;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
   overflow: hidden;
   z-index: 999;
 }
