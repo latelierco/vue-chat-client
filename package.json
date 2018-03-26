@@ -1,12 +1,11 @@
 {
   "name": "vue-chat-client",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "This is a chat client for Vue.js",
   "author": "trinktmage <tranremi@live.fr>",
   "license": "MIT",
   "main": "src/App.vue",
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
     "axios": "^0.18.0",
     "gsap": "^1.20.4",
