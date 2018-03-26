@@ -2,7 +2,7 @@
   <div id="bot-app" style="opacity: 0;">
     <div class="sizing-gabarit">
       <Heading :closeUi="()=>closeUI()" :header-caption="headerCaption"/>
-      <feed-container :feeds="feeds"/>
+      <feed-container :feeds="feeds" :uid="uid"/>
       <UserInput :on-submit="()=>onSubmit()" :message="message" :update-message="(event)=>updateMessage(event)" :placeholder="userInputPlaceholder"/>
       <div :class="['cta-activate', !open ? 'active': false]">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 363 363" style="enable-background:new 0 0 363 363;" xml:space="preserve" width="100%" height="100%">
@@ -33,6 +33,10 @@ export default {
     userInputPlaceholder: {
       type: String,
       default: () => 'your question'
+    },
+    uid: {
+      type: String,
+      default: () => 'uid'
     },
     feeds: {
       type: Array,
@@ -271,7 +275,7 @@ export default {
       this.feeds.push({
         text: this.message,
         type: 'message',
-        owned: true
+        uid: this.uid
       })
       if (this.feederUrl) {
         var feed = {
