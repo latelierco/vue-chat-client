@@ -1,6 +1,6 @@
 {
   "name": "vue-chat-client",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "This is a chat client for Vue.js",
   "author": "trinktmage <tranremi@live.fr>",
   "license": "MIT",
