@@ -17,6 +17,7 @@
 
 ``` bash
 npm install vue-chat-client --save
+npm install sass-loader node-sass -save-dev
 ```
 
 ``` js
