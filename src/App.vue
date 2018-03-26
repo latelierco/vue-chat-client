@@ -253,33 +253,7 @@ export default {
       this.message = $event.target.value
     },
     onSubmit() {
-      if (this.message == '༼ つ ◕_◕ ༽つ') {
-        this.feeds.push({
-          text: this.message,
-          type: 'message',
-          owned: true
-        })
-        this.feeds.push({
-          type: 'card',
-          text: "L'Atelier",
-          url:
-            'https://cdn.mos.cms.futurecdn.net/UAYAH4UAehXrpwh6BKUWU9-970-80.jpg'
-        })
-        this.message = ''
-      } else if (this.message == '“ヽ(´▽｀)ノ”') {
-        this.feeds.push({
-          text: this.message,
-          type: 'message',
-          owned: true
-        })
-        this.feeds.push({
-          type: 'quote',
-          title: "L'Atelier",
-          url:
-            'https://pre00.deviantart.net/317c/th/pre/i/2011/023/7/5/new_york_by_skelly1000-d31hkzj.jpg'
-        })
-        this.message = ''
-      } else if (this.message) {
+      if (this.message) {
         this.feedMe()
         this.message = ''
       }
@@ -288,21 +262,10 @@ export default {
       let data = {
         text: message
       }
-      return axios
-        .post(
-          this.feederUrl,
-          data
-        )
-        .catch(error => console.log(error))
+      return axios.post(this.feederUrl, data).catch(error => console.log(error))
     },
     mapper(data) {
-      let newData = {
-        type: 'message',
-        text: data.Text,
-        url:
-          'https://pre00.deviantart.net/317c/th/pre/i/2011/023/7/5/new_york_by_skelly1000-d31hkzj.jpg'
-      }
-      return newData
+      return data
     },
     feedMe() {
       this.feeds.push({
