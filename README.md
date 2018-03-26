@@ -11,7 +11,45 @@
 
 > This is a chat client for Vue.js
 
-## Build Setup
+### Installation
+
+#### NPM + ES2015
+
+``` bash
+npm install vue-chat-client --save
+```
+
+``` js
+import ChatClient from 'vue-chat-client'
+```
+
+### Usage
+
+``` js
+export default {
+  components: {
+    ChatClient
+  },
+  data() {
+    return: {
+      feeds: [
+        {
+          type: 'message',
+          uid: 'UID',
+          text: 'Example message'
+        }
+      ]
+    }
+  }
+}
+```
+
+``` html
+<!-- bind to it normally in templates -->
+<chat-client :feeds="feeds"/>
+```
+
+## Development Setup
 
 ``` bash
 # install dependencies
