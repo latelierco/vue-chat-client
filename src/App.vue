@@ -113,7 +113,10 @@ export default {
 
     if (this.draggable) {
       this.$el.addEventListener('mousedown', this.startInteraction, false)
+    } else {
+      this.$el.addEventListener('click', this.openUI, false)
     }
+
   },
   methods: {
     startInteraction(event) {
