@@ -4,7 +4,7 @@
       v-bind:css="false"
       v-on:enter="enter"
     >
-      <div :class="['feed-box', feed.owned ? 'owned' : 'not-owned']" v-for="(feed, i) in feeds" :key="i" >
+      <div :class="['feed-box', feed.uid === uid? 'owned' : 'not-owned']" v-for="(feed, i) in feeds" :key="i" >
         <transition
           v-bind:css="false"
           v-on:enter="subEnter"
@@ -29,7 +29,7 @@ import List from './VentureProposition'
 import Empty from './Empty'
 
 export default {
-  props: ['feeds'],
+  props: ['feeds', 'uid'],
   components: {
     Message,
     Card,
