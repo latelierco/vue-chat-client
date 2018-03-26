@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import TweenMax from 'gsap'
-import ScrollToPlugin from 'imports-loader?define=>false!gsap/src/uncompressed/plugins/ScrollToPlugin'
+import {TweenMax,} from 'gsap'
+import ScrollToPlugin from 'gsap/ScrollToPlugin'
 
 import axios from 'axios'
 
