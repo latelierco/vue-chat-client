@@ -15,7 +15,7 @@
 
 <script>
 import TweenMax from 'gsap'
-import ScrollToPlugin from './../node_modules/gsap/src/uncompressed/plugins/ScrollToPlugin.js'
+import ScrollToPlugin from 'imports-loader?define=>false!gsap/src/uncompressed/plugins/ScrollToPlugin'
 
 import axios from 'axios'
 

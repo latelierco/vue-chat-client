@@ -1,6 +1,6 @@
 {
   "name": "vue-chat-client",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "This is a chat client for Vue.js",
   "author": "trinktmage <tranremi@live.fr>",
   "license": "MIT",
@@ -28,6 +28,7 @@
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^2.30.1",
+    "imports-loader": "^0.8.0",
     "node-notifier": "^5.1.2",
     "node-sass": "^4.8.3",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
